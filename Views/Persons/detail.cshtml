@@ -1,0 +1,30 @@
+@model PersonDetailViewModel
+
+<section class="course-info">
+    <div class="row">
+        <div class="col-md-9">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+    
+    </div>
+
+   
+
+        <div class="col-md-3">
+             <aside>
+            @foreach(AutoViewModel auto in Model.Garage){
+                
+                <p>@auto.Marca </p>
+                <p>@auto.Modello</p>
+                <p>@auto.Colore</p>
+            }
+           
+              </aside>  
+                
+                
+               
+                 
+        </div>
+    </div>
+</section>
+

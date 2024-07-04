@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using people.Models.Services.Application;
 using People.Models.Services.Application;
 using People.Models.ViewModels;
+
 
 namespace People.Controllers
 {
@@ -26,14 +26,16 @@ namespace People.Controllers
         Quindi nella pagina detail visualizzare oltre ai dettagli della persona, anche la lista di auto associate */
         public IActionResult Index()
         {
-            var personService = new PersonService();
+           
             List<PersonViewModel> people = personService.GetPeople();
             return View(people);
         }
 
-        /* public IActionResult Detail(int id)
+        public IActionResult Detail(int Id)
         {
-
-        } */
+         PersonDetailViewModel viewModel = personService.GetPerson(Id);
+         ViewData ["Title"] = "Informazioni personali" ;
+         return View (viewModel);
+        } 
     }
 }
