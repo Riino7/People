@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using people.Models.Services.Application;
 using People.Models.Services.Application;
 using People.Models.ViewModels;
 
@@ -12,6 +13,12 @@ namespace People.Controllers
 {
     public class PersonsController : Controller
     {
+        private readonly IPersonService personService;
+
+
+       public PersonsController(IPersonService personService){
+        this.personService = personService;
+       }
 
         /*  Creare un controller che recupera una lista di persone nell'action Index, 
         e i dettagli di una singola persona nell'action detail(int id)
