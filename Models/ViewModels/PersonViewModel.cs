@@ -17,13 +17,13 @@ namespace People.Models.ViewModels
    
      
       public static PersonViewModel FromDataRow (DataRow dataRow){
-         var personViewModel = new PersonViewModel {
-                Id = Convert.ToInt32(dataRow ["id"]),
-                Name = Convert.ToString(dataRow["name"]),
-                Surname = Convert.ToString(dataRow["surname"]),
-                 Age = Convert.ToInt32(dataRow["age"]),
-             
-            };
+           var personViewModel = new PersonViewModel
+    {
+        Id = dataRow["id"] != DBNull.Value ? Convert.ToInt32(dataRow["id"]) : 0,
+        Name = dataRow["name"] != DBNull.Value ? Convert.ToString(dataRow["name"]) : string.Empty,
+        Surname = dataRow["surname"] != DBNull.Value ? Convert.ToString(dataRow["surname"]) : string.Empty,
+        Age = dataRow["age"] != DBNull.Value ? Convert.ToInt32(dataRow["age"]) : 0,
+    };
             return personViewModel;
       }
 

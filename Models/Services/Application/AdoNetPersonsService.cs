@@ -64,7 +64,9 @@ namespace People.Models.Services.Application
        public PersonDetailViewModel CreatePerson(PersonCreateInputModel input)
     {
         string name = input.name;
-        var dataSet = db.Query($@"INSERT INTO persona (name) VALUES ({name});
+        string surname = input.surname;
+        int age = input.age;
+        var dataSet = db.Query($@"INSERT INTO persona (name, surname, age) VALUES ({name}, {surname}, {age});
         SELECT last_insert_rowid();");
         int id = Convert.ToInt32(dataSet.Tables[0].Rows[0][0]);
         PersonDetailViewModel person = GetPerson(id);
