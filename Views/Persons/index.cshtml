@@ -24,10 +24,10 @@
             <h2>Age:</h2>
             <h3>@person.Age</h3>
         </div>
-            <button class="navbar-toggler" data-target="#navbar" data-toggle="collapse">
-                <span class="navbar-toggler-icon" asp-action="Detail" asp-route-id = "@person.Id" >Lista auto </span>
-            </button>
-
+             <div class="col-md-2 d-flex align-items-center">
+            <a class="btn btn-outline-primary" asp-action="Detail" asp-route-id="@person.Id">Dettaglio</a>
+        </div>
+    
         @* <div class="col-md-2">
             @foreach (Auto car in person.Garage)
             {

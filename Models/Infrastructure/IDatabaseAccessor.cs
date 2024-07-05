@@ -8,6 +8,7 @@ namespace People.Models.Infrastructure
 {
     public interface IDatabaseAccessor
     {
-         DataSet Query(string query);
+         DataSet Query(FormattableString query);//formattable è una classe che getisce la divisione tra query e parametri
+
     }
 }
