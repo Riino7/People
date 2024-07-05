@@ -17,7 +17,7 @@ namespace People.Models.Services.Application
         private readonly IDatabaseAccessor db;
         public AdoNetPersonsService(IDatabaseAccessor db)
         {
-            this.db = db;
+            this.db =  db;
         }
 
         public List<PersonViewModel> GetPeople()
