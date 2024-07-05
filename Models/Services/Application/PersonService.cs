@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using People.Models.ViewModels;
+using People.Models.InputModel;
 
 namespace People.Models.Services.Application
 {
-    // public class PersonService 
-    // {
+     public class PersonService 
+     {
     //     public List<PersonViewModel> GetPeople()
     //     {
     //         var peopleList = new List<PersonViewModel>();
@@ -41,4 +43,9 @@ namespace People.Models.Services.Application
 
 
     // }
-}
+
+     public PersonDetailViewModel CreatePerson(PersonCreateInputModel input){
+            throw new NotImplementedException();
+        }
+}}
+

@@ -1,0 +1,14 @@
+@model PersonCreateInputModel;
+
+<h1>@ViewData["name"]</h1>
+<form method="post">
+    <div class="row">
+        <div class="col-md-8 mb-3">
+            <input type="text" asp-for="name" class="form-control form-control-lg"
+             placeholder="Nome">
+        </div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="fas fa-rocket"></i> Aggiungi persona</button>
+        </div>
+    </div>
+</form>

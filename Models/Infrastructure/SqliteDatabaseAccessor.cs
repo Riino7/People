@@ -30,7 +30,7 @@ namespace People.Models.Infrastructure
      using (var conn = new SqliteConnection ("Data Source=Data/People.db ")){
         conn.Open();
         using (var cmd = new SqliteCommand(query , conn)){
-
+            cmd.Parameters.AddRange(sqliteParameters);
          using (var reader = cmd.ExecuteReader()){
             var dataSet = new DataSet();
             dataSet.EnforceConstraints = false;

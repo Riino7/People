@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using People.Models.Services.Application;
 using People.Models.ViewModels;
+using People.Models.InputModel;
 
 
 namespace People.Controllers
@@ -37,5 +38,23 @@ namespace People.Controllers
          ViewData ["Title"] = "Informazioni personali" ;
          return View (viewModel);
         } 
+
+
+
+       public IActionResult Create()
+        {
+            ViewData["name"] = "Nuova persona inserita";
+            var input = new PersonCreateInputModel();
+            return View(input);
+        }
+
+        [HttpPost]
+        public IActionResult Create(PersonCreateInputModel input)
+        {
+            ViewData["name"] = "Nuova persona inserita";
+            PersonDetailViewModel person = personService.CreatePerson(input);//metodo che deve eseguire la query INSERT INTO nel db usando il titolo che ho inserito nel form
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

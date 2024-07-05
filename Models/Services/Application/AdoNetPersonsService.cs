@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using People.Models.Infrastructure;
 using People.Models.ViewModels;
 using System.Data;
+using People.Models.InputModel;
 
 
 
@@ -22,7 +23,7 @@ namespace People.Models.Services.Application
 
         public List<PersonViewModel> GetPeople()
         {
-            string query = "SELECT id, name, surname , age FROM persona";
+            FormattableString query = $"SELECT id, name, surname , age FROM persona";
             DataSet dataSet = db.Query(query);
             var dataTable = dataSet.Tables[0];
             var personsList = new List<PersonViewModel>();
@@ -38,7 +39,7 @@ namespace People.Models.Services.Application
         }
         public PersonDetailViewModel GetPerson(int id)
         {
-            string query = "SELECT id, name, surname , age FROM persona WHERE id = " + id + "; SELECT Id, IDperson, Marca , Modello , Colore  FROM auto WHERE IDperson =" + id;
+            FormattableString query = $@"SELECT id, name, surname , age FROM persona WHERE  Id ={id}; SELECT Id, IDperson, Marca , Modello , Colore  FROM auto WHERE IDperson ={id}"; 
 
             DataSet dataSet = db.Query(query);
             var personDataTable = dataSet.Tables[0];
@@ -59,6 +60,17 @@ namespace People.Models.Services.Application
 
             return personDetailViewModel;
         }
+
+       public PersonDetailViewModel CreatePerson(PersonCreateInputModel input)
+    {
+        string name = input.name;
+        var dataSet = db.Query($@"INSERT INTO persona (name) VALUES ({name});
+        SELECT last_insert_rowid();");
+        int id = Convert.ToInt32(dataSet.Tables[0].Rows[0][0]);
+        PersonDetailViewModel person = GetPerson(id);
+        return person;
+    }
+
 
     }
 }
