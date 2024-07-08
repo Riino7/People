@@ -2,6 +2,7 @@
 
 <h1>
     Lista di persone
+    <a class="btn btn-outline-primary btn-sm" asp-action="Create"><i class="fa fa-plus"></i> Crea nuova persona</a>
 </h1>
 
 @foreach (PersonViewModel person in Model)
@@ -24,7 +25,11 @@
             <h2>Age:</h2>
             <h3>@person.Age</h3>
         </div>
-        <div class="col-md-2">
+             <div class="col-md-2 d-flex align-items-center">
+            <a class="btn btn-outline-primary" asp-action="Detail" asp-route-id="@person.Id">Dettaglio</a>
+        </div>
+    
+        @* <div class="col-md-2">
             @foreach (Auto car in person.Garage)
             {
                 <ul>
@@ -34,6 +39,6 @@
                     <li>@car.Colore</li>
                 </ul>
             }
-        </div>
+        </div> *@
     </div>
 }
